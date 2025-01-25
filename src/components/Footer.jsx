@@ -16,7 +16,7 @@ function Footer() {
           </div>
           <div className="flex space-x-4">
             <a
-              href="https://github.com/myinotes"
+              href="https://github.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-400 transition duration-300"
@@ -25,7 +25,7 @@ function Footer() {
               <FaGithub size={24} />
             </a>
             <a
-              href="https://linkedin.com/company/myinotes"
+              href="https://linkedin.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-blue-400 transition duration-300"

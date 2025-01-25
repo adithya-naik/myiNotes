@@ -7,7 +7,6 @@ import {
   FaUsers,
   FaClipboardList,
   FaChalkboardTeacher,
-  FaArrowRight,
   FaChevronDown,
   FaChevronUp,
   FaCode,
@@ -26,34 +25,45 @@ import {
   FaStar,
   FaRocket,
   FaLightbulb,
-  FaClock,
+  FaDesktop,
+  FaCogs,
+  FaNetworkWired,
+  FaGlobe,
+  FaFileCode,
+  FaCloud,
+  FaLock,
+  FaChartPie,
+  FaRobot,
+  FaLink,
+  FaBug,
+  FaProjectDiagram,
+  FaComments,
 } from "react-icons/fa"
 
 function YearCard({ yearData, onSelectYear }) {
   return (
     <div
-      className={`bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${
-        !yearData.available && "opacity-50 cursor-not-allowed"
-      }`}
+      className={`bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${!yearData.available && "opacity-50"}`}
     >
       <div className="p-6 h-full flex flex-col justify-between">
         <div>
           <FaGraduationCap className="text-5xl mb-4 mx-auto text-blue-500" />
           <h2 className="text-2xl font-semibold text-center mb-2">B.Tech Year {yearData.year}</h2>
-          {yearData.available ? (
-            <p className="text-center text-gray-600 mb-4">{yearData.semesters.length} Semesters</p>
-          ) : (
-            <p className="text-center mt-4">Coming Soon</p>
-          )}
+          <p className="text-center text-gray-600 mb-4">
+            {yearData.available ? `${yearData.semesters.length} Semesters` : "Coming Soon"}
+          </p>
         </div>
-        {yearData.available && (
-          <button
-            onClick={() => onSelectYear(yearData)}
-            className="mt-4 w-full bg-blue-500 text-white px-4 py-2 rounded-full hover:bg-blue-600 transition-colors duration-300"
-          >
-            View Details
-          </button>
-        )}
+        <button
+          onClick={() => yearData.available && onSelectYear(yearData)}
+          className={`mt-4 w-full px-4 py-2 rounded-full transition-colors duration-300 ${
+            yearData.available
+              ? "bg-blue-500 text-white hover:bg-blue-600"
+              : "bg-gray-300 text-gray-600 cursor-not-allowed"
+          }`}
+          disabled={!yearData.available}
+        >
+          {yearData.available ? "View Details" : "Not Available"}
+        </button>
       </div>
     </div>
   )
@@ -244,18 +254,12 @@ const years = [
   {
     year: 3,
     available: false,
-    semesters: [
-      { name: "Semester 5", subjects: [] },
-      { name: "Semester 6", subjects: [] },
-    ],
+    semesters: [],
   },
   {
     year: 4,
     available: false,
-    semesters: [
-      { name: "Semester 7", subjects: [] },
-      { name: "Semester 8", subjects: [] },
-    ],
+    semesters: [],
   },
 ]
 
@@ -319,13 +323,13 @@ function Home() {
         </div>
       </section>
 
-      <section className="bg-blue-600 text-white py-16 rounded-lg">
+      <section className="bg-gradient-to-r from-blue-500 to-indigo-600 text-white py-16 rounded-lg">
         <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold mb-4">Get Started Today</h2>
           <p className="text-xl mb-8">
             Join thousands of SNIST students who are already benefiting from our comprehensive study materials.
           </p>
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-6">
+          <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-6">
             <Link
               to="/year/1"
               className="bg-white text-blue-600 px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-100 transition-all duration-300 inline-flex items-center transform hover:scale-105"
@@ -339,13 +343,6 @@ function Home() {
             >
               <FaLightbulb className="mr-2" />
               Get Support
-            </Link>
-            <Link
-              to="#"
-              className="bg-green-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition-all duration-300 inline-flex items-center transform hover:scale-105"
-            >
-              <FaClock className="mr-2" />
-              View Schedule
             </Link>
           </div>
         </div>
